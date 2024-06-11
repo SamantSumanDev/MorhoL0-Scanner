@@ -10,12 +10,13 @@ import android.widget.Toast
 
 class UsbBroadcastReceiver : BroadcastReceiver() {
     companion object {
-        const val ACTION_USB_PERMISSION = "android.permission.USB_PERMISSION"
+        const val ACTION_USB_PERMISSION = "com.samant.morphoscanner.USB_PERMISSION"
     }
 
 
     override fun onReceive(context: Context?, intent: Intent?) {
 
+        Log.d("USBBROAD", intent?.action.toString())
         if (ACTION_USB_PERMISSION == intent?.action) {
             synchronized(this) {
                 val device = intent.getParcelableExtra<UsbDevice>(UsbManager.EXTRA_DEVICE)
